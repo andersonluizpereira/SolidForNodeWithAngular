@@ -1,3 +1,8 @@
 https://thinkster.io/tutorials/angular-2-http
 git remote add origin https://github.com/andersonluizpereira/SolidForNodeWithAngular.git
 v
+
+https://offering.solutions/blog/articles/2016/02/01/consuming-a-rest-api-with-angular-http-service-in-typescript/
+
+bootstrap 4
+npm i bootstrap@next --save
