@@ -8,13 +8,10 @@ import { MonitorService } from "app/monitor/monitor.service";
    styleUrls: ['./monitor.component.css']
 })
 export class MonitorComponent implements OnInit {
-  @Input() monitor: Monitor[];
-
+  
   public monitors: Monitor [] = new Array();
   constructor(private monitorService: MonitorService) {
-    
- 
-
+  
    }
 
    loadMonitor() {
