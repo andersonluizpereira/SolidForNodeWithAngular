@@ -6,11 +6,13 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { MonitorComponent } from './monitor/monitor.component';
 import {  Configuration } from "app/monitor/monitor.service";
+import { IpsearchComponent } from './ipsearch/ipsearch.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MonitorComponent
+    MonitorComponent,
+    IpsearchComponent
   ],
   imports: [
     BrowserModule,

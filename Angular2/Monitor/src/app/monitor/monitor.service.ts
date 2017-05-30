@@ -27,16 +27,15 @@ export class MonitorService {
         this.headers.append('Accept', 'application/json');
     }
 
- public getMonitor = (): Observable<Monitor[]> => {
-        return this._http.get(this.actionUrl)
-            .map((response: Response) => <Monitor[]>response.json());
+public getMonitor(): Observable<Monitor[]>{
+    return this._http.get(this.actionUrl).map(this.extractData)
+  }
 
-    }
+   private extractData(res: Response) : Monitor[] {
+     let body = res.json();
+     return body || {};
 
-     private extractData(res: Response) {
-        let body = res.json();
-        return body.data || { };
-    }
+   }
 
 private handleError (error: any) {
         // In a real world app, we might use a remote logging infrastructure
