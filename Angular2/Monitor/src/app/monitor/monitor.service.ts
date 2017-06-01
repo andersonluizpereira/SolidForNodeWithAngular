@@ -6,8 +6,12 @@ import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class Configuration {
-    public Server: string = 'http://hsqlweb01:8065/';
-    public ApiUrl: string = 'dashboard/';
+    // public Server: string = 'http://hsqlweb01:8065/';
+    // public ApiUrl: string = 'dashboard/';
+    public Server: string = 'http://localhost:3412/';
+    public ApiUrl: string = 'users/';
+   
+   
     public ServerWithApiUrl = this.Server + this.ApiUrl;
 }
 
@@ -20,26 +24,46 @@ export class MonitorService {
 
    constructor(private _http: Http, private _configuration: Configuration) {
 
-        this.actionUrl = _configuration.ServerWithApiUrl + 'GetAllJsons/';
+        this.actionUrl = _configuration.ServerWithApiUrl ;
 
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json');
         this.headers.append('Accept', 'application/json');
     }
 
-public getMonitor(): Observable<Monitor[]>{
-    return this._http.get(this.actionUrl).map(this.extractData)
-  }
+//     public getMonitor(): Observable<Monitor[]>{
+//     return  this._http.get(this.actionUrl).map(this.extractData)
+// }
 
-   private extractData(res: Response) : Monitor[] {
-     let body = res.json();
+   getMonitor(){
+    return  this._http.get(this.actionUrl).map(this.extractData)
+    }
+
+
+   private extractData(res: Response)  {
+     let body =  res.json();
      return body || {};
 
-   }
+
+ }
+
+
+
+
+
+//    private extractData(res: Response) : string {
+//      let body =  res.json();
+//      let corpo = res.json();
+     
+//      for (var index = 0; index < corpo.length; index++) {
+//          var element = corpo[index];
+//          console.log(element);
+//      }
+//      return body || { };
+
+//    }
 
 private handleError (error: any) {
-        // In a real world app, we might use a remote logging infrastructure
-        // We'd also dig deeper into the error to get a better message
         let errMsg = (error.message) ? error.message :
           error.status ? `${error.status} - ${error.statusText}` : 'Server error';
         console.error(errMsg); // log to console instead

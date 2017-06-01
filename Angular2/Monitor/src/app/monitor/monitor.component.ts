@@ -5,7 +5,7 @@ import { MonitorService } from "app/monitor/monitor.service";
   selector: 'app-monitor',
   templateUrl: './monitor.component.html',
   providers: [MonitorService],
-   styleUrls: ['./monitor.component.css'],
+  styleUrls: ['./monitor.component.css'],
 //    template: `
 //   <h1>{{title}}</h1>
 //   <h2>My favorite hero is: {{myHero.name}}</h2>
@@ -16,42 +16,39 @@ import { MonitorService } from "app/monitor/monitor.service";
 //       </li>
 //   </ul>
 //   <p *ngIf="heroes.length > 3">There are many heroes!</p>
+
+// <p> {{monitors.DisplaySystem}}  </p>
+
 // `
-   template: `
-  <h1>{{title}}</h1>
+
+template: `
   
-  <p>Heroes:</p>
-  <ul>
-    
-  <p *ngIf="monitors.length > 3">There are many heroes!</p>
+  <div class="row" *ngFor="let post of monitors">
+    <p>{{ post | json }}</p>
+   </div>
 `
+   
 })
 export class MonitorComponent implements OnInit {
-  
-  public monitors: Monitor; 
-heroes = [
-    new Hero(1, 'Windstorm'),
-    new Hero(13, 'Bombasto'),
-    new Hero(15, 'Magneta'),
-    new Hero(20, 'Tornado')
-  ];
-  myHero = this.monitors[0];
+//monitors : Monitor[]; 
+monitors : any =[]; 
 
-
-  constructor(private monitorService: MonitorService) {
+constructor(private monitorService: MonitorService) {
   
    }
 
    loadMonitor() {
-    //this.monitorService.getMonitor().subscribe((data:Monitor[]) => this.monitors = data, error => console.log(error),() => console.log('Get all Items complete'));
+   //this.monitorService.getMonitor().subscribe((data:Monitor[]) => this.monitors = data, error => console.log(error),() => );
 
-    this.monitorService.getMonitor().subscribe(IP => this.monitors = IP);
-
+   this.monitorService.getMonitor().subscribe(data => { this.monitors =  data });
+ 
   }
+    
+
 
   ngOnInit() {
   this.loadMonitor()
-    
+  
 }
 
  
@@ -64,27 +61,54 @@ class Hero {
 }
 
 
- class Item {
+export class Item {
+       
+        IdDashboardInterface: number;
+        LastStartExecution: Date;
+        LastEndExecution: Date;
+        IdDashboardStatus: number;
+        IsAlive: boolean;
+        InterfaceRegister: string;
+        Description: string;
+        DisplayName: string;
+        System: string;
+       
        constructor( 
-        public IdDashboardInterface: number,
-        public LastStartExecution: Date,
-        public LastEndExecution: Date,
-        public IdDashboardStatus: number,
-        public IsAlive: boolean,
-        public InterfaceRegister: string,
-        public Description: string,
-        public DisplayName: string,
-        public System: string
-        ){}
+        IdDashboardInterface: number,
+        LastStartExecution: Date,
+        LastEndExecution: Date,
+        IdDashboardStatus: number,
+        IsAlive: boolean,
+        InterfaceRegister: string,
+        Description: string,
+        DisplayName: string,
+        System: string
+        ){
+    
+        this.IdDashboardInterface = IdDashboardInterface;
+        this.LastStartExecution = LastStartExecution;
+        this.LastEndExecution = LastEndExecution;
+        this.IdDashboardStatus =IdDashboardStatus;
+        this.IsAlive = IsAlive;
+        this.InterfaceRegister = InterfaceRegister;
+        this.Description = Description;
+        this.DisplayName = DisplayName;
+        this.System = System;
+
+        }
     }
 
-   class Monitor {
+ export  class Monitor {
+        DisplaySystem: string;
+        Items: Item[]
      constructor( 
         DisplaySystem: string,
         Items: Item[]
-     ){}
+     ){
+       this.DisplaySystem = DisplaySystem;
+       this.Items = Items;       
+     }
     }
-
 
 
 @Pipe({name: 'keys'})
