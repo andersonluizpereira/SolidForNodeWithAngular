@@ -23,9 +23,7 @@ import { MonitorService } from "app/monitor/monitor.service";
 
 template: `
   
-  <div class="row" *ngFor="let post of monitors">
-    <p>{{ post | json }}</p>
-   </div>
+
 `
    
 })
