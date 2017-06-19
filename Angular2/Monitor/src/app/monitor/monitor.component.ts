@@ -23,22 +23,25 @@ import { MonitorService } from "app/monitor/monitor.service";
 
 template: `
   
-
+   <div class="row" *ngFor="let disp of monitors">
+    <h1>{{disp.DisplaySystem}}</h1>
+   </div>
+  
 `
    
 })
 export class MonitorComponent implements OnInit {
-//monitors : Monitor[]; 
-monitors : any =[]; 
+monitors : Monitor[]; 
+//monitors : any =[]; 
 
 constructor(private monitorService: MonitorService) {
   
    }
 
    loadMonitor() {
-   //this.monitorService.getMonitor().subscribe((data:Monitor[]) => this.monitors = data, error => console.log(error),() => );
+  this.monitorService.getMonitor().subscribe((data:Monitor[]) => this.monitors = data, error => console.log(error), ()=> console.log(this.monitors));
 
-   this.monitorService.getMonitor().subscribe(data => { this.monitors =  data });
+//   this.monitorService.getMonitor().subscribe(data => { this.monitors =  data => console.log(this.monitors) });
  
   }
     

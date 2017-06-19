@@ -6,10 +6,10 @@ import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class Configuration {
-    // public Server: string = 'http://hsqlweb01:8065/';
-    // public ApiUrl: string = 'dashboard/';
-    public Server: string = 'http://localhost:3412/';
-    public ApiUrl: string = 'users/';
+     public Server: string = 'http://hsqlweb01:8065/';
+     public ApiUrl: string = 'dashboard/GetAllJsons';
+    // public Server: string = 'http://localhost:3412/';
+    // public ApiUrl: string = 'users/';
    
    
     public ServerWithApiUrl = this.Server + this.ApiUrl;
@@ -21,8 +21,12 @@ export class MonitorService {
    
     private actionUrl: string;
     private headers: Headers;
+    private obj :any;
 
    constructor(private _http: Http, private _configuration: Configuration) {
+
+      //  this.getJSON().subscribe(data => this.obj=data =>console.log(this.obj), error => console.log(error));
+         
 
         this.actionUrl = _configuration.ServerWithApiUrl ;
 
@@ -31,23 +35,32 @@ export class MonitorService {
         this.headers.append('Accept', 'application/json');
     }
 
-//     public getMonitor(): Observable<Monitor[]>{
-//     return  this._http.get(this.actionUrl).map(this.extractData)
-// }
-
-   getMonitor(){
+    public getMonitor(): Observable<Monitor[]>{
     return  this._http.get(this.actionUrl).map(this.extractData)
-    }
+}
+
+//    getMonitor(){
+//     return  this._http.get(this.actionUrl).map(this.extractData)
+//     }
 
 
    private extractData(res: Response)  {
      let body =  res.json();
-     return body || {};
+     let corpo = body || {};
+    //  console.log(corpo)
+    //  console.log(JSON.parse(corpo))
+
+
+     return JSON.parse(body || {});
 
 
  }
 
+public getJSON(): Observable<any> {
+         return this._http.get("file.json")
+                         .map((res:any) => res.json());
 
+     }
 
 
 
