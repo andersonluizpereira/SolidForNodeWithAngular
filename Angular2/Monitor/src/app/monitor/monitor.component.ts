@@ -6,33 +6,33 @@ import { MonitorService } from "app/monitor/monitor.service";
   templateUrl: './monitor.component.html',
   providers: [MonitorService],
   styleUrls: ['./monitor.component.css'],
-//    template: `
-//   <h1>{{title}}</h1>
-//   <h2>My favorite hero is: {{myHero.name}}</h2>
-//   <p>Heroes:</p>
-//   <ul>
-//     <li *ngFor="let hero of heroes">
-//       {{ hero.name }}
-//       </li>
-//   </ul>
-//   <p *ngIf="heroes.length > 3">There are many heroes!</p>
 
-// <p> {{monitors.DisplaySystem}}  </p>
-
-// `
-
-template: `
+  template: `
+  <div class="table table-bordered table-striped table-striped table-sm">
+     <table class="table" *ngFor="let disp of monitors">
+  <tr>
+    <th>
+       <h3>{{disp.DisplaySystem}}</h3>
   
-   <div class="row" *ngFor="let disp of monitors">
-    <h1>{{disp.DisplaySystem}}</h1>
-   </div>
+   </th>
+  </tr>
+ 
+  <td *ngFor="let item of disp.Items">
+     <tr>
+       <h3>{{item.DisplayName}}</h3>
+    </tr>
+   </td>
+
+  
+  </table>
+
+</div>
   
 `
    
 })
 export class MonitorComponent implements OnInit {
 monitors : Monitor[]; 
-//monitors : any =[]; 
 
 constructor(private monitorService: MonitorService) {
   
@@ -40,8 +40,6 @@ constructor(private monitorService: MonitorService) {
 
    loadMonitor() {
   this.monitorService.getMonitor().subscribe((data:Monitor[]) => this.monitors = data, error => console.log(error), ()=> console.log(this.monitors));
-
-//   this.monitorService.getMonitor().subscribe(data => { this.monitors =  data => console.log(this.monitors) });
  
   }
     
