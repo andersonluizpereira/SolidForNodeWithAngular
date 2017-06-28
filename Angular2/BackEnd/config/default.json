@@ -1,0 +1,17 @@
+  
+  {
+  "mysql": {
+    "user": "teste",
+    "password": "12345678c@",
+    "host": "localhost",
+    "port": 3306,
+    "database": "casadocodigo"
+  },
+  "base": {
+    "user": "root",
+    "password": "",
+    "host": "localhost",
+    "port": 3306,
+    "database": "spa"
+  }
+}

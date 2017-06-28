@@ -1,0 +1,87 @@
+    1  ls
+    2  docker images
+    3  clear
+    4  cls
+    5  clear
+    6  ls
+    7  c:node
+    8  c:
+    9  ls node/
+   10  ls
+   11  cd /
+   12  ls
+   13  cd /C/node/boas-praticas-js-master/crud-nodejs
+   14  ls
+   15  touch dockerfile
+   16  vim dockerfile 
+   17  vim dockerfile 
+   18  vim dockerfile 
+   19  docker images
+   20  ls
+   21  docker build . -t onbuild
+   22  docker images
+   23  ,s
+   24  ls
+   25  cat app.js 
+   26  vim dockerfile 
+   27  docker build . -t onbuild 
+   28  docker run -p 5000:3000 --name xuxa onbuild
+   29  vim app.js 
+   30  vim package.json 
+   31  docker build . -t onbuild 
+   32  docker ps -a
+   33  docker rm $(docker ps -aq)
+   34  docker stop $(docker ps -aq)
+   35  docker rm $(docker ps -aq)
+   36  docker ps -a
+   37  docker run -p 5000:3000 --name xuxa onbuild
+   38  ls
+   39  cd ..
+   40  ls
+   41  ls
+   42  cd crud-nodejs/
+   43  ls
+   44  cat app.js 
+   45  ls
+   46  ls
+   47  ls
+   48  pwd
+   49  cd ..
+   50  ls
+   51  pwd
+   52  cd javascript-boas-praticas/
+   53  ls
+   54  cd ..
+   55  ls
+   56  cd crud-nodejs/
+   57  ls
+   58  pwd
+   59  cd ..
+   60  ls
+   61  cd ..
+   62  ls
+   63  cd 4/
+   64  ls
+   65  cd crud-nodejs
+   66  ls
+   67  docker run -p 5000:3000 --name xuxa onbuild
+   68  docker run -p 5000:3000 --name xuxa1 onbuild
+   69  docker stop $(docker ps -aq)
+   70  docker rm $(docker ps -aq)
+   71  docker run -p 5000:3000 --name xuxa onbuild
+   72  docker run -p 5000:3412 --name xuxa onbuild
+   73  docker run -p 5000:3412 --name xux onbuild
+   74  docker build . -t onbuild 
+   75  docker run -p 5000:3412 --name teste onbuild
+   76  docker build . -t onbuild 
+   77  docker run -p 5000:3412 --name teste onbuild
+   78  docker images
+   79  docker stop $(docker ps -aq)
+   80  docker rm $(docker ps -aq)
+   81  docker run -p 5000:3412 --name teste onbuild
+   82  history
+   83  clear
+   84  history
+   85  history > file.txt
+   86  cat file.txt 
+   87  history > file.txt
