@@ -32,14 +32,13 @@ export class MonitorService {
 
     public getMonitor(): Observable<Monitor[]>{
     return  this._http.get(this.actionUrl).map(this.extractData)
-}
+    }
 
 
    private extractData(res: Response)  {
      let body =  res.json();
      let corpo = body || {};
      return JSON.parse(body || {});
-
 
  }
 
