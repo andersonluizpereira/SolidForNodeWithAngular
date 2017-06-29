@@ -1,10 +1,14 @@
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div class="col col-lg-12" *ngIf="getView()" >
-   <div class="card">
-            
-            <table id="tableDisplay" class="table table-bordered table-striped table-striped table-sm " style="background-color: white;">
+<!--<button (click)="showDialog = !showDialog" class="btn">Open</button>-->
+
+<app-dialog [(visible)]="showDialog">
+     <div class="modal-body">
+                 <table id="tableDisplay" class="table table-bordered table-striped table-striped table-sm " style="background-color: white;">
                 <thead class="card-header thead-inverse text-center">
                     <tr>
                         <th>
@@ -40,10 +44,11 @@
 
                 </tbody>
             </table>
-        </div>
-</div>
+                   </div>
+  <button (click)="showDialog = !showDialog" class="btn">Close</button>
+</app-dialog>
 
-  <div class="col col-lg-12">
+    <div class="col col-lg-12">
        
         <div class="card">
             
@@ -66,8 +71,8 @@
  
                     </tr>
                 </thead>
-                <tbody>
-                    <tr (click)="mostrar(itens)"  style="font-size: 20px; color: black;"  *ngFor="let itens of livros">
+                <tbody> 
+                    <tr (click)="mostrar('Destalhes',itens)"  style="font-size: 20px; color: black;"  *ngFor="let itens of livros">
                                <b> {{itens.id}}</b> <br/>
                       <td>
                                 <b>{{itens.descricao}}</b>
@@ -87,4 +92,4 @@
 
                 </tbody>
             </table>
-        </div>
+    </div>
