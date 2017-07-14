@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from "@angular/http";
 import { Observable } from "rxjs/Observable";
-import { Livro } from "app/livros/livro";
+import { Livro, LivroPost } from "app/livros/livro";
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -36,8 +36,10 @@ export class LivrosService {
     return  this._http.get(this.actionUrl).map(this.extractData)
    }
 
-    public PostLivro(_livro:Livro){
-       this._http.post(this.actionUrl, this.Data(_livro))
+    public PutLivro(_livro:LivroPost) : Observable<Livro[]>{
+        let body = this.Data(_livro)
+        console.log(body)
+       return this._http.put(this.actionUrl,body, { headers : this.headers}).map(this.extractData)
     }
 
  private extractData(res: Response)  {
