@@ -6,11 +6,13 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { UserServiceService } from "app/user/user-service.service";
+import { MeuPrimeiroComponent } from './meu-primeiro/meu-primeiro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent
+    UserComponent,
+    MeuPrimeiroComponent
       ],
   imports: [
     BrowserModule,
