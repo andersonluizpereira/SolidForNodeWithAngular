@@ -1,4 +1,4 @@
-<section class="property-binding">
+<!-- <section class="property-binding">
   <!-- <article>
     <h3>Interpolation</h3>
 
@@ -15,7 +15,7 @@
      <img  bind-src="urlImagem">
 
  </article> -->
- <article>
+ <!-- <article>
     <h3>Class e Style Bindings</h3>   
     <div>
       Selecione uma classe:
@@ -46,4 +46,81 @@
 
 </article>   
 
-</section>
+</section> --> 
+
+<!-- <section class="event-binding">
+  <article>
+     <h3>Event Binding</h3>
+       <div> 
+         <button (click)="botaoClicado()" class="btn btn-primary">Me click!</button>
+            <br/> <br/>
+         <input type="text" 
+          (keyup)="onKeyUp($event)"
+          (keyup.enter)="salvarValor(campoInput.value)"
+          (blur)="salvarValor(campoInput.value)"
+          #campoInput />
+             
+         <p>Valor atual: {{ valorAtual }}</p>
+         <p>Valor salvo: {{ valorSalvo }}</p>
+       
+         <br/>
+        <span 
+        (mouseover)="onMouseOverOut()" 
+        (mouseout)="onMouseOverOut()"
+        [class.highlight]="isMouseOver"
+        >  
+
+          Passe o mouse sobre mim !
+        </span>
+
+        
+       
+        </div>
+
+  </article>
+
+</section> -->
+
+<!-- <section class="two-way-binding">
+  <article>
+     <h3>Two-way data Binding</h3>
+         <div>
+            <input type="text" 
+              [value]="nome"
+              (input)="nome = $event.target.value"
+            />
+               <br/>
+          <input type="text" 
+              [ngModel]="nome"
+              (ngModelChange)="nome = $event"
+            />
+                           <br/>
+          <input type="text" 
+              [(ngModel)]="nome"
+              
+            />
+
+            <br/>
+          <input type="text" 
+              bindon-ngModel="nome"
+              
+            />
+
+
+
+            <p>Você digitou: {{ nome }} </p>
+
+         </div>
+
+         <div>
+  <p> Meu nome é pessoa {{ pessoa.nome }} e tenho a idade {{ pessoa.idade }} </p>
+
+    <input type="text" [(ngModel)]="pessoa.nome" />
+    <input type="text" [(ngModel)]="pessoa.idade" />
+
+         </div>
+  </article>
+
+</section> -->
+
+<app-meu-form></app-meu-form>
