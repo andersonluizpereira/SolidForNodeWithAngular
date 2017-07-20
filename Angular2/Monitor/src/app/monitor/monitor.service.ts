@@ -42,25 +42,6 @@ export class MonitorService {
 
  }
 
-public getJSON(): Observable<any> {
-         return this._http.get("file.json")
-                         .map((res:any) => res.json());
-
-     }
-
-
-
-//    private extractData(res: Response) : string {
-//      let body =  res.json();
-//      let corpo = res.json();
-     
-//      for (var index = 0; index < corpo.length; index++) {
-//          var element = corpo[index];
-//          console.log(element);
-//      }
-//      return body || { };
-
-//    }
 
 private handleError (error: any) {
         let errMsg = (error.message) ? error.message :
