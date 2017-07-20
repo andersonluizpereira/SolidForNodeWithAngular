@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers } from "@angular/http";
+import { Http, Response, Headers, RequestOptions } from "@angular/http";
 import { Observable } from "rxjs/Observable";
-import { Livro, LivroPost } from "app/livros/livro";
+import { Livro, LivroPost, MensagemCadastro } from "app/livros/livro";
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -17,7 +17,8 @@ export class Configuration {
 
 @Injectable()
 export class LivrosService {
- 
+    
+    private http: Http;
     private actionUrl: string;
     private headers: Headers;
     private obj :any;
@@ -25,10 +26,12 @@ export class LivrosService {
      
 
      constructor(private _http: Http, private _configuration: Configuration) {
+        this.http = _http;
         this.actionUrl = _configuration.ServerWithApiUrl ;
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json');
-        this.headers.append('Accept', 'application/json');
+        
+       
      
     }
 
@@ -36,10 +39,11 @@ export class LivrosService {
     return  this._http.get(this.actionUrl).map(this.extractData)
    }
 
-    public PutLivro(_livro:LivroPost) : Observable<Livro[]>{
-        let body = this.Data(_livro)
+    public PutLivro(_livro:LivroPost) : Observable<MensagemCadastro> {
+         let body = this.Data(_livro)
         console.log(body)
-       return this._http.put(this.actionUrl,body, { headers : this.headers}).map(this.extractData)
+       return this._http.put(this.actionUrl,body, { headers : this.headers}).map(() => new MensagemCadastro('Livro alterada com sucesso', false));
+               
     }
 
  private extractData(res: Response)  {
@@ -55,6 +59,19 @@ export class LivrosService {
 
  }
  
+ 
+ 
+
+
+private handleErrorObservable (error: Response | any) {
+	console.error(error.message || error);
+	return Observable.throw(error.message || error);
+    }
+    private handleErrorPromise (error: Response | any) {
+	console.error(error.message || error);
+	return Promise.reject(error.message || error);
+    }	
+
 }
 
  

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Livro, LivroPost } from "app/livros/livro";
 import { LivrosService } from "app/livros/livros.service";
 import { DialogComponent } from "app/dialog/dialog.component";
+import { Router } from "@angular/router/src";
 
 
 @Component({
@@ -19,6 +20,7 @@ showDialog = false;
  livros : Livro[];
  livrosPost : Livro;
  titulo : string;
+ mensagem: string = '';
  isActive:boolean;
  isModal:boolean;
  @Input() livro: Livro;
@@ -27,6 +29,7 @@ _id: number;
 _titulo: string;
 _descricao: string;
 _preco: number;
+router: Router;
  
 
 
@@ -52,7 +55,15 @@ SalvarDados() {
      this.livro.descricao = this._descricao;
      this.livro.preco = this._preco;
       this.livro.id =  this._id;
-    console.log(this.livroService.PutLivro(this.livro))
+      this.livroService.PutLivro(this.livro).subscribe(res => {
+                this.mensagem = res.mensagem;
+                 this.showDialog = !this.showDialog
+               // this.router.navigate(['']);
+            }, erro => {
+                console.log(erro);
+                this.mensagem = 'Não foi possível salvar o livro';
+            });
+
 
 }
 
