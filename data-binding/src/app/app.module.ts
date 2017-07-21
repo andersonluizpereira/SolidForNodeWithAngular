@@ -8,13 +8,15 @@ import { DataBindingComponent } from './data-binding/data-binding.component';
 import { MeuFormModule } from "app/meu-form/meu-form.module";
 import { InputPropertyComponent } from './input-property/input-property.component';
 import { OutputPropertyComponent } from './output-property/output-property.component';
+import { ClicoComponent } from './clico/clico.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DataBindingComponent,
     InputPropertyComponent,
-    OutputPropertyComponent
+    OutputPropertyComponent,
+    ClicoComponent
   ],
   imports: [
     BrowserModule,

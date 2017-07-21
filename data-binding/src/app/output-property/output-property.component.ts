@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'contador',
@@ -11,32 +11,26 @@ export class OutputPropertyComponent implements OnInit {
 
  @Output() mudouValor = new EventEmitter();
   
- numeros  =  [];
+ @ViewChild('campoInput') campoValorInput: ElementRef;
 
   incrementa(){
-    this.valor++;
+   // this.valor++;
+    this.campoValorInput.nativeElement.value++;
     this.mudouValor.emit({novoValor : this.valor});
   }
 
   decrementa(){
 
-    this.valor--;
+    //this.valor--;
+     this.campoValorInput.nativeElement.value--;
     this.mudouValor.emit({novoValor : this.valor});
     
   }
 
-
-
   constructor() { }
 
   ngOnInit() {
-     if (this.numeros.length>0){
-          console.log('M');
-     }  
-        else{
-          console.log('N');
-
-        }
+     
   }
 
 }
