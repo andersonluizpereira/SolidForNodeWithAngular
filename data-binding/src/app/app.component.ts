@@ -17,4 +17,11 @@ export class AppComponent {
   destruirClico(){
     this.deletarCiclo = true;
   }
+
+
+  oninput(evento : KeyboardEvent){
+   
+
+  }
+
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-data-binding',
@@ -14,6 +14,9 @@ export class DataBindingComponent implements OnInit {
   valorSalvo: string ='';
   isMouseOver: boolean = false;
   nomeDoCurso: string = 'Angular';
+
+  @Input('nome') nomeCurso: string ='ANGULAR';
+  
 
   valorInicial = 15;
 
@@ -42,7 +45,9 @@ getCurtiCurso(){
  }   
 
  onKeyUp(evento : KeyboardEvent){
+  
   this.valorAtual = ((<HTMLInputElement>evento.target).value);
+
   
  }
 
