@@ -1,4 +1,4 @@
-import { Component, OnInit, Pipe, PipeTransform, Input } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform, Input, OnChanges } from '@angular/core';
 import { MonitorService } from "app/monitor/monitor.service";
 
 @Component({
@@ -14,6 +14,19 @@ import { MonitorService } from "app/monitor/monitor.service";
         <div class="card">
             
             <table id="tableDisplay" class="table table-bordered table-striped table-striped table-sm " style="background-color: white;">
+             
+                <thead class="card-header thead-inverse text-center">
+                    <tr style="font-size: 20px; color: black;">
+                        
+                        <th colspan="4">
+                            {{disp.DisplaySystem}} <b style="font-size: 30px; float:right">  TOTAL : {{ disp.Items.length}} </b>
+                        </th>
+                       
+
+                    </tr>
+                </thead>
+            
+            
                 <thead class="card-header thead-inverse text-center">
                     <tr>
                         
@@ -44,8 +57,11 @@ import { MonitorService } from "app/monitor/monitor.service";
                                 <b>{{itens.LastStartExecution | date:'HH:mm:ss'}}</b>
                       </td>  
                       <td>
-                          <span class=" fa fa-1x {{itens.IsAlive ? 'fa-arrow-circle-up greenyellowAlive' :'fa-arrow-circle-right yellowAlive'  }} ">
-                                </span>
+                           <!-- <span class=" fa fa-1x {{itens.IsAlive ? 'fa-arrow-circle-up greenyellowAlive' :'fa-arrow-circle-right yellowAlive'  }} ">  </span> -->
+                           
+                           <span class=" fa fa-1x {{itens.IsDestroy ? 'fa-arrow-circle-down redAlive' :itens.IsAlive ? 'fa-arrow-circle-up greenyellowAlive' :'fa-arrow-circle-right yellowAlive'  }} ">  </span>
+                           
+
                       </td>  
                     </tr>
 
@@ -57,28 +73,44 @@ import { MonitorService } from "app/monitor/monitor.service";
    
 })
 export class MonitorComponent implements OnInit {
-monitors : Monitor[]; 
+    
+    monitors: Monitor[]; 
 
 constructor(private monitorService: MonitorService) {
   
    }
 
    loadMonitor() {
-  this.monitorService.getMonitor().subscribe((data:Monitor[]) => this.monitors = data, error => console.log(error), ()=> console.log(this.monitors));
+     this.monitorService.getMonitor().subscribe((data:Monitor[]) => this.monitors = data, error => console.log(error), ()=> 
+     
+     
+      this.monitors.forEach(element => {
+           element.Items.forEach(elemntItens =>{
+            
+            var datas = new Date(elemntItens.LastStartExecution)
+            var dataComp = new Date().getHours()
+            var resp;
+            
+            var soma = datas.getHours() - dataComp;
+
+            if  (soma<=-3){
+                elemntItens.IsDestroy = true;
+            }
+
+           })    
+     }) 
+    
+    );
  
   }
     
-
-
   ngOnInit() {
 
      setInterval(() => {
     this.loadMonitor(); 
   }, 5000);
-  
-  
+ 
 }
-
  
 }
 
@@ -94,6 +126,7 @@ export class Item {
         Description: string;
         DisplayName: string;
         System: string;
+        IsDestroy: boolean
        
        constructor( 
         IdDashboardInterface: number,
@@ -104,7 +137,8 @@ export class Item {
         InterfaceRegister: string,
         Description: string,
         DisplayName: string,
-        System: string
+        System: string,
+        IsDestroy: boolean
         ){
     
         this.IdDashboardInterface = IdDashboardInterface;
@@ -116,6 +150,7 @@ export class Item {
         this.Description = Description;
         this.DisplayName = DisplayName;
         this.System = System;
+        this.IsDestroy = IsDestroy;
 
         }
     }

@@ -55,6 +55,9 @@ export class ClicoComponent implements OnChanges, OnInit,
       this.log('ngOnDestroy');
     }
 
+
+   
+
     private log(hook: string) {
       console.log(hook);
     }
