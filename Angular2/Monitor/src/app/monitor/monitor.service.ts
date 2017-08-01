@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/zip';
 import { Monitor } from "app/monitor/monitor.component";
 import { Observable } from "rxjs/Observable";
 
@@ -33,6 +34,8 @@ export class MonitorService {
     public getMonitor(): Observable<Monitor[]>{
     return  this._http.get(this.actionUrl).map(this.extractData)
     }
+
+
 
 
    private extractData(res: Response)  {
