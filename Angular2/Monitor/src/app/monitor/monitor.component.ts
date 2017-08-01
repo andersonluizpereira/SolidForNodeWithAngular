@@ -27,7 +27,7 @@ import { MonitorService } from "app/monitor/monitor.service";
                 </thead>
             
             
-                <thead class="card-header thead-inverse text-center">
+                <!--<thead class="card-header thead-inverse text-center">
                     <tr>
                         
                         <th>
@@ -45,7 +45,7 @@ import { MonitorService } from "app/monitor/monitor.service";
                         </th>
 
                     </tr>
-                </thead>
+                </thead>-->
                 <tbody>
                     <tr  style="font-size: 20px; color: black;" *ngFor="let itens of disp.Items">
                                <b> {{itens.DisplayName}}</b> <br/>
