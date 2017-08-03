@@ -19,14 +19,17 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "../node_modules/tether/dist/css/tether.min.css"
+         "./Content/bootstrap.min.css",
+        "./Content/animate.css",
+        "./Content/style.css",
+        "./fonts/font-awesome/css/font-awesome.min.css"
+        
       ],
       "scripts": [
-        "../node_modules/jquery/dist/jquery.min.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
-        "../node_modules/tether/dist/js/tether.min.js"
+         "./scripts/jquery-2.1.1.min.js",
+        "./scripts/plugins/jquery-ui/jquery-ui.min.js",
+        "./scripts/bootstrap.min.js"
+
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
