@@ -5,12 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './sku.component.html',
   styleUrls: ['./sku.component.css']
 })
-export class SkuComponent implements OnInit {
+export class SkuComponent {
 
   constructor() { }
-
-  ngOnInit() {
-    console.log("sssssss")
-  }
 
 }

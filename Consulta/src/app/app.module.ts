@@ -6,17 +6,19 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { SkuComponent } from './sku/sku.component';
 import { SkuModule } from "app/sku/sku.module";
+import { BotaoModule } from "app/botao/botao.module";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SkuComponent
     
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    SkuModule
+    BotaoModule
   ],
   providers: [],
   bootstrap: [AppComponent]
