@@ -9,7 +9,9 @@ exports.config = {
   specs: [
     './e2e/**/*.e2e-spec.ts'
   ],
-  capabilities: {
+    chromeDriver: 'C:/Users/acpereira/AppData/Roaming/npm/node_modules/webdriver-manager/selenium/chromedriver_2.31.exe',
+    seleniumServerJar:'C:/Users/acpereira/AppData/Roaming/npm/node_modules/webdriver-manager/selenium/selenium-server-standalone-3.4.0.jar',
+ capabilities: {
     'browserName': 'chrome'
   },
   directConnect: true,
